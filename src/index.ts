@@ -55,15 +55,15 @@ class InventoryManager{
         return this.products.reduce((total, product) => total + product.price * product.quantity, 0);
     }
 
-    restockProduct(productId: string, newquantity: number): void {
-        if (newquantity <= 0) {
+    restockProduct(productId: string, quantity: number): void {
+        if (quantity <= 0) {
             throw new Error("Restock quantity must be greater than zero.");
         }
         const product = this.products.find(p => p.id === productId);
         if (!product) {
             throw new Error(`Product with ID ${productId} does not exist.`);
         }
-        product.quantity += newquantity;
+        product.quantity += quantity;
     }
 }
 
